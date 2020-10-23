@@ -23,7 +23,7 @@
         </div>
 
         <div>
-            <button onclick="login()">Login</button>
+            <button onclick="homepage()">Login</button>
             <button onclick="getDashboard()">Get Dashboard</button>
             <button onclick="getSettings()">Settings</button>
         </div>
@@ -31,7 +31,14 @@
    </div>
 
    <script> 
-       function login(){
+//    var currpage = window.location.href;
+//    if(currpage != null ){
+//     alert("Redirected to login");
+//     window.location('./');
+// }
+   ChangeUrl('','homepage');
+   
+       function homepage(){
            const data={
                username: document.getElementById('username').value,
                password: document.getElementById('password').value,
@@ -50,7 +57,8 @@
        }
 
        function getDashboard(){
-           const token = localStorage.getItem('jwt');
+         const token = localStorage.getItem('jwt');
+         console.log("API:"+token);
             axios.get('/api/dashboard', {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -62,11 +70,16 @@
                     document.querySelector('h1.row').innerHTML = 'Dashboard';
                     document.querySelector('main').innerHTML = res.data.myContent;
                 }
+                else if(!res.data.success){
+                    alert('Token Expired ');
+                    window.location="./";
+                }
             });
        }
 
        function getSettings(){
            const token = localStorage.getItem('jwt');
+           console.log("API:"+token);
             axios.get('/api/settings', {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -74,14 +87,19 @@
             })
             .then(res => {
                 if(res && res.data && res.data.success){
+                    ChangeUrl('', 'settings');
                     document.querySelector('h1.row').innerHTML = 'Settings';
                     document.querySelector('main').innerHTML = res.data.myContent;
-                    ChangeUrl('', 'settings');
+                    
+                }
+                else if(!res.data.success){
+                    alert('Token Expired');
+                    window.location="./";
                 }
             });
        }
 
-    function ChangeUrl(title, url) {
+       function ChangeUrl(title, url) {
         if (typeof (history.pushState) != "undefined") {
             var obj = { Title: title, Url: url };
             history.pushState(obj, obj.Title, obj.Url);
@@ -89,7 +107,8 @@
             alert("Browser does not support HTML5.");
         }
 
-}
+    }
+
    </script>
 </body>
 </html>
