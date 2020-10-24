@@ -10,6 +10,7 @@ var tokenCheck;
 
 var verifyToken = function(req,res,next){
     var tokenValue = req.header('authorization').split(" ")[1];
+    console.log(tokenValue);
     // console.log(tokenValue);
     if(!tokenValue){
         res.json({
@@ -107,7 +108,7 @@ app.post('/api/login', (req, res) => {
         }
     });
 
-app.get('/api/dashboard', verifyToken, (req, res) => {
+app.get('/api/dashboard',verifyToken, (req, res) => {
     console.log(res);
     res.json({
         success: true,

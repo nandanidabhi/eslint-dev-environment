@@ -37,7 +37,7 @@
 //     window.location('./');
 // }
    ChangeUrl('','homepage');
-   
+   var button;
        function homepage(){
            const data={
                username: document.getElementById('username').value,
@@ -58,6 +58,7 @@
 
        function getDashboard(){
          const token = localStorage.getItem('jwt');
+         
          console.log("API:"+token);
             axios.get('/api/dashboard', {
                 headers: {
@@ -69,11 +70,16 @@
                     ChangeUrl('', 'dashboard');
                     document.querySelector('h1.row').innerHTML = 'Dashboard';
                     document.querySelector('main').innerHTML = res.data.myContent;
+                    var btn = document.createElement("Button");   // Create a <button> element
+                    btn.innerHTML = "Settings";
+                    btn.setAttribute('onclick','getSettings();');    
+                    document.querySelector('main').appendChild(btn);
                 }
                 else if(!res.data.success){
                     alert('Token Expired ');
                     window.location="./";
                 }
+
             });
        }
 
