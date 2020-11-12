@@ -70,3 +70,4 @@ function smallerBudget() {
     newArray.sort((a, b) => (a.budget > b.budget) ? 1 : - 1);
     generateTable(newArray);
 }
+

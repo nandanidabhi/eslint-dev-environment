@@ -1,0 +1,30 @@
+{
+  "name": "uncc-quiz10-main",
+  "version": "1.0.0",
+  "description": "Code to be used to start the Quiz 10 exercise.",
+  "main": "main.js",
+  "scripts": {
+    "lint": "eslint ./"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-standard": "^16.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-standard": "^4.1.0",
+    "prettier": "^2.1.2"
+  },
+  "dependencies": {
+    "editorconfig": "^0.15.3",
+    "restify": "^8.5.1"
+  }
+}
