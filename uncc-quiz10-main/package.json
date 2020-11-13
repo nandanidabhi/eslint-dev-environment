@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "lint": "eslint .",
-    "lint:fix":"eslint . --fix"
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
@@ -23,5 +23,8 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.2",
     "prettier": "^2.1.1"
+  },
+  "dependencies": {
+    "editorconfig": "^0.15.3"
   }
 }
